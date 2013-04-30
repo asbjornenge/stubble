@@ -1,15 +1,18 @@
 # Stubble
 
-*Tiny hairy templates*
+**NB! Stubble is not ready for consumption just yet.**
 
-## Install
+*Tiny hairy templates, with potential.*
 
-	bower install stubble --save
+Stubble is a ***142 byte*** template system. It has a few areas of focus:
 
-## Use
+* Staying tiny
+* Keep the markup clean & separate from logic
+* Easily expandable (using filters)
 
-	<script src="components/stubble/stubble.min.js"></script>
+It is far from a slick [handlebar mustache](http://handlebarsjs.com/), but you can easily grow it however you want.
 
+## Basics
 
 ### Defining templates
 
@@ -25,5 +28,31 @@
 	<div id="login" class="login">
         <span>Welcome Bob!</span>
     </div>
+
+## Filters
+
+…more on this later…
+
+### Validation
+
+### Databind
+
+### Two-way databind
+
+### Other useful examples
+
+## Install
+
+…bower support coming soon… don't use it for now :-P
+
+## Use
+
+	<script src="components/stubble/stubble.min.js"></script>
+
+## TODO
+
+* Remove prepacked databind support
+* Write more tests
+* Finish documentation
 
 enojy.
