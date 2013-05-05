@@ -17,8 +17,8 @@ module.exports = function(grunt) {
         stripBanners: true
       },
       dist: {
-        src: ['js/*.js'],
-        dest: 'dist/<%= pkg.name %>_v<%= pkg.version %>.js'
+        src: ['lib/*.js'],
+        dest: 'dist/<%= pkg.name %>.v<%= pkg.version %>.js'
       }
     },
     uglify: {
@@ -27,25 +27,27 @@ module.exports = function(grunt) {
       },
       dist: {
         src: '<%= concat.dist.dest %>',
-        dest: 'dist/<%= pkg.name %>_v<%= pkg.version %>.min.js'
+        dest: 'dist/<%= pkg.name %>.v<%= pkg.version %>.min.js'
       }
     },
     jshint: {
       options: {
-        curly: true,
-        eqeqeq: true,
-        immed: true,
-        latedef: true,
-        newcap: true,
-        noarg: true,
-        sub: true,
-        undef: true,
-        unused: true,
-        boss: true,
-        eqnull: true,
-        browser: true,
-        globals: {
-          jQuery: true
+        curly   : true,
+        eqeqeq  : true,
+        immed   : true,
+        latedef : true,
+        newcap  : true,
+        noarg   : true,
+        sub     : true,
+        undef   : true,
+        unused  : true,
+        boss    : true,
+        eqnull  : true,
+        browser : true,
+        globals : {
+          jQuery : true,
+          $      : true,
+          stub   : true
         }
       },
       gruntfile: {

@@ -1,13 +1,6 @@
-/**
- * Stubble
- * -------
- * Tiny Hairy templates
- *
- * Web     : http://asbjornenge.com/stubble
- * Author  : @asbjornenge
- * License : MIT
- **/
-
+/*! Stubble ~ Tiny Hairy Templates - v0.0.1 - 2013-05-05
+* http://www.asbjornenge.com/stubble
+* Copyright (c) 2013 @asbjornenge; Licensed  */
 var stub = function render(name, obj) {
     if (!stub.templates.hasOwnProperty(name)) {return;}
     var tmp   = $(stub.templates[name]).clone();
