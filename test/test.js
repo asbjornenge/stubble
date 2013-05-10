@@ -8,7 +8,7 @@
  * License : MIT
  **/
 
-/*global module:false, test:false, equal:false, notEqual:false */
+/*global module, test, equal, notEqual */
 
 (function() {
     'use strict';
