@@ -16,7 +16,7 @@ It is far from a slick [handlebar mustache](http://handlebarsjs.com/), but you c
 
 ### Defining templates
 
-    <div template="login" id="login" class="login">
+    <div stub="login" id="login" class="login">
         <span>Welcome {{user}}!</span>
     </div>
 
@@ -40,6 +40,9 @@ It is far from a slick [handlebar mustache](http://handlebarsjs.com/), but you c
 ### Two-way databind
 
 ### Other useful examples
+
+* Update sibling?
+* Loops?
 
 ## Install
 
