@@ -1,4 +1,4 @@
-/*! Stubble ~ Tiny Hairy Templates - v0.0.1 - 2013-05-05
+/*! Stubble ~ Tiny Hairy Templates - v0.0.1 - 2013-05-15
 * http://www.asbjornenge.com/stubble
 * Copyright (c) 2013 @asbjornenge; Licensed  */
 var stub = function render(name, obj) {
