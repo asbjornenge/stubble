@@ -58,6 +58,15 @@ define([
             expect(index).to.be.above(-1);
             stubble.templates = {}
         })
+
+        it('Should extract nested stubs individually', function() {
+            var parent = createStub('users');
+            var child  = createStub('user');
+            parent.appendChild(child);
+            stubble.load();
+            expect(stubble.templates).to.have.property('users');
+            expect(stubble.templates).to.have.property('user');
+        })
     })
 
 
