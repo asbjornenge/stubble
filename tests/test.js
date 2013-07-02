@@ -135,7 +135,30 @@ define([
     })
 
     describe('Filters', function() {
-        console.log(stubble.filters)
+        it('Should pass filter data through defined filters', function() {
+            createStub('user', 'Hi there {{user@filterA}}!')
+            stubble.filters['filterA'] = function(data) {
+                data['extracted'] = 'yolo';
+            }
+            stubble.load();
+            var template = stubble('user', { user : 'asbjornenge' });
+            var index    = template.firstChild.nodeValue.indexOf('yolo');
+            expect(index).to.be.above(-1);
+            delete stubble.filters['filterA'];
+        })
+
+        it('Should have some specific properties', function() {
+            createStub('user', 'Hi there {{user@filterA}})')
+            stubble.filters['filterA'] = function(data) {
+                expect(data).to.have.property('extracted');
+                expect(data).to.have.property('expr');
+                expect(data).to.have.property('obj');
+                expect(data).to.have.property('node');
+            }
+            stubble.load();
+            var template = stubble('user', { user : 'asbjornenge' });
+            delete stubble.filters['filterA'];
+        })
 
         // verify filter data object (and it's properties)
 
@@ -143,11 +166,10 @@ define([
         // custom filter
         // replacing a filter
 
+        // test databind example ?
+
     })
 
-
-    // TEST
-    //    @filters
 
   }
 })
