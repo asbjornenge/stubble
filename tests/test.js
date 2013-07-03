@@ -155,6 +155,7 @@ define([
                 expect(data).to.have.property('expr');
                 expect(data).to.have.property('obj');
                 expect(data).to.have.property('node');
+                expect(data.node.id).to.equal('user');
             }
             stubble.load();
             var template = stubble('user', { user : 'asbjornenge' });
@@ -190,7 +191,7 @@ define([
 
         // DONE - default filters
         // DONE - custom filter
-        // replacing a filter
+        // DONE - replacing a filter
 
         // test databind example ?
 
