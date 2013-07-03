@@ -145,6 +145,7 @@ define([
             var index    = template.firstChild.nodeValue.indexOf('yolo');
             expect(index).to.be.above(-1);
             delete stubble.filters['filterA'];
+            stubble.templates = {}
         })
 
         it('Should have some specific properties', function() {
@@ -158,12 +159,37 @@ define([
             stubble.load();
             var template = stubble('user', { user : 'asbjornenge' });
             delete stubble.filters['filterA'];
+            stubble.templates = {}
         })
 
-        // verify filter data object (and it's properties)
+        it('Should default turn undefined & nulls into empty strings', function() {
+            createStub('user', 'Hi there {{userA}} and {{userB}}')
+            stubble.load();
+            var template = stubble('user', { userA : null });
+            var nodeVal = template.firstChild.nodeValue;
+            expect(nodeVal.indexOf('null')).to.be.below(0);
+            expect(nodeVal.indexOf('undefined')).to.be.below(0);
+            stubble.templates = {}
+        })
 
-        // default filters
-        // custom filter
+        it('Should allow replacement of filters', function() {
+            createStub('user', 'Hi there {{userA}} and {{userB}}')
+            var old_null = stubble.filters['_null'];
+            stubble.filters['_null'] = function(data) {}
+            stubble.load();
+            var template = stubble('user', { userA : null });
+            var nodeVal = template.firstChild.nodeValue;
+            expect(nodeVal.indexOf('null')).to.be.above(0);
+            expect(nodeVal.indexOf('undefined')).to.be.below(0);
+            stubble.templates = {}
+            stubble.filters['_null'] = old_null;
+        })
+
+
+        // DONE - verify filter data object (and it's properties)
+
+        // DONE - default filters
+        // DONE - custom filter
         // replacing a filter
 
         // test databind example ?
