@@ -22,6 +22,20 @@ define([
         return template;
     }
 
+    function createDataBindForm(name) {
+        var template = document.createElement("div");
+        template.id = name;
+        template.setAttribute('data-stub',name);
+        var content = document.createTextNode("Hi {{username@databind}}!");
+        var input   = document.createElement("input");
+        input.type  = 'text';
+        input.setAttribute('value', '{{username@databind}}');
+        template.appendChild(content);
+        template.appendChild(input);
+        document.body.appendChild(template);
+        return template;
+    }
+
     describe('Basics', function() {
         it('Library should be a function!', function() {
             expect(stubble).to.be.a('function');
@@ -195,8 +209,57 @@ define([
 
         // test databind example ?
 
+        it('Should be possible to implement databind', function() {
+            var data = {
+                username : 'asbjorn',
+            }
+            var dbevent = new CustomEvent('dataBindEvent');
+
+            createDataBindForm('databind');
+            stubble.load();
+
+            stubble.filters.databind = function(data) {
+                // TODO: Do better!
+                switch(data.node.nodeName) {
+                    case 'INPUT':
+                        data.node.onchange = function() {
+                            data.obj[data.prop] = this.value;
+                            this.dispatchEvent(dbevent);
+                        }
+                        data.node.addEventListener('dataBindEvent', function(e) {
+                            this.value = data.obj[data.prop];
+                        }, false)
+                        break;
+                    case 'DIV':
+                        data.orig = data.child.nodeValue;
+                        data.node.children[0].addEventListener('dataBindEvent', function(e) {
+                            data.child.textContent = data.orig;
+                            data.extracted = data.obj[data.prop];
+                            stubble.filters.replace(data);
+                        }, false);
+                }
+            }
+
+            var template = stubble('databind', data);
+
+            template.children[0].setAttribute('value','elisabeth');
+            template.children[0].onchange();
+            expect(data.username).to.equal('elisabeth');
+            var nodeVal = template.firstChild.nodeValue;
+            expect(nodeVal.indexOf('elisabeth')).to.be.above(0);
+
+            data.username = 'eplekake';
+            template.children[0].dispatchEvent(dbevent);
+            expect(template.children[0].value).to.equal('eplekake');
+            var nodeVal = template.firstChild.nodeValue;
+            expect(nodeVal.indexOf('eplekake')).to.be.above(0);
+
+            stubble.templates = {}
+        })
     })
 
+    // TODO: Test including filters as a plugin?
+    // Put databind in a separate test module and pull the filter as plugin.
 
   }
 })
