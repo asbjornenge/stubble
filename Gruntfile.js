@@ -1,6 +1,8 @@
 /*global module:false*/
 module.exports = function(grunt) {
 
+  require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+
   // Project configuration.
   grunt.initConfig({
     // Metadata.
@@ -17,7 +19,7 @@ module.exports = function(grunt) {
         stripBanners: true
       },
       dist: {
-        src: ['lib/*.js'],
+        src: ['lib/{,*/}*.js'],
         dest: 'dist/<%= pkg.name %>.v<%= pkg.version %>.js'
       }
     },
@@ -31,34 +33,19 @@ module.exports = function(grunt) {
       }
     },
     jshint: {
-      options: {
-        curly   : true,
-        eqeqeq  : true,
-        immed   : true,
-        latedef : true,
-        newcap  : true,
-        noarg   : true,
-        sub     : true,
-        undef   : true,
-        unused  : true,
-        boss    : true,
-        eqnull  : true,
-        browser : true,
-        globals : {
-          jQuery : true,
-          $      : true,
-          stub   : true
-        }
-      },
-      gruntfile: {
-        src: 'Gruntfile.js'
-      },
+      options: grunt.file.readJSON('.jshintrc'),
       lib_test: {
-        src: ['lib/**/*.js', 'test/**/*.js']
+        src: ['lib/{,*/}*.js']
       }
     },
-    qunit: {
-      files: ['test/**/*.html']
+    intern: {
+      library: {
+        options: {
+          // for other available options, see:
+          // https://github.com/theintern/intern/wiki/Using-Intern-with-Grunt#task-options
+          config: 'tests/intern'
+        }
+      }
     },
     watch: {
       gruntfile: {
@@ -72,15 +59,13 @@ module.exports = function(grunt) {
     }
   });
 
-  // These plugins provide necessary tasks.
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-nodeunit');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-qunit');
+  grunt.loadNpmTasks('intern');
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify']);
+  grunt.registerTask('default', ['intern', 'concat', 'uglify']);
+
+  // Specific tasks
+  grunt.registerTask('test', ['intern']);
+  grunt.registerTask('hint', ['jshint']);
 
 };

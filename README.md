@@ -54,8 +54,10 @@ It is far from a slick [handlebar mustache](http://handlebarsjs.com/), but you c
 
 ## TODO
 
-* Remove prepacked databind support
 * Write more tests
 * Finish documentation
-
+* Support loading templates async?
+    * stubble.load('path/to/file.html')
+    * stubble.load('path/to/folder')
+    * ?? jade syntax ??
 enojy.
