@@ -4,7 +4,7 @@
 
 *Tiny hairy templates, with potential.*
 
-Stubble is a ***142 byte*** template system. It has a few areas of focus:
+Stubble is a ***552 byte*** (gzipped) template system. It has a few areas of focus:
 
 * Staying tiny
 * Keep the markup clean & separate from logic
@@ -16,16 +16,20 @@ It is far from a slick [handlebar mustache](http://handlebarsjs.com/), but you c
 
 ### Defining templates
 
-    <div stub="login" id="login" class="login">
+Put the data stub's somewhere in your dom.
+
+    <div data-stub="login">
         <span>Welcome {{user}}!</span>
     </div>
 
 ### Rendering templates
 
+Calling stub.load() will collect all your stubs and remove them from the dom.
+
 	stub.load()
 	var login = stub('login',{'user':'Bob'})
 	==>
-	<div id="login" class="login">
+	<div>
         <span>Welcome Bob!</span>
     </div>
 

@@ -11,25 +11,28 @@ module.exports = function(grunt) {
       '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
       '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
       '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
-      ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
+      ' Licensed <%= pkg.license %> */\n',
     // Task configuration.
-    concat: {
-      options: {
-        banner: '<%= banner %>',
-        stripBanners: true
-      },
-      dist: {
-        src: ['lib/{,*/}*.js'],
-        dest: 'dist/<%= pkg.name %>.v<%= pkg.version %>.js'
-      }
-    },
+    // concat: {
+    //   options: {
+    //     banner: '<%= banner %>',
+    //     stripBanners: true
+    //   },
+    //   dist: {
+    //     src: ['lib/{,*/}*.js'],
+    //     dest: 'dist/<%= pkg.name %>.v<%= pkg.version %>.js'
+    //   }
+    // },
     uglify: {
       options: {
-        banner: '<%= banner %>'
+        banner: '<%= banner %>',
+        preserveComments : 'false',
+        compress : true,
+        report : 'gzip'
       },
       dist: {
-        src: '<%= concat.dist.dest %>',
-        dest: 'dist/<%= pkg.name %>.v<%= pkg.version %>.min.js'
+        src  : 'lib/stubble.js',
+        dest : 'dist/<%= pkg.name %>.v<%= pkg.version %>.min.js'
       }
     },
     jshint: {
@@ -62,7 +65,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('intern');
 
   // Default task.
-  grunt.registerTask('default', ['intern', 'concat', 'uglify']);
+  grunt.registerTask('default', ['uglify']);
 
   // Specific tasks
   grunt.registerTask('test', ['intern']);

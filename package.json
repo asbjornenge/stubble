@@ -1,10 +1,11 @@
 {
   "name": "stubble",
   "version": "0.0.1",
-  "homepage" : "http://www.youtube.com/watch?v=cDuG95DXbw8",
+  "homepage" : "http://www.asbjornenge.com/stubble",
   "author" : {
-    "name" : "Obi-Wan Kenobi"
+    "name" : "Asbjorn Enge"
   },
+  "license" : "BSD",
   "dependencies": {},
   "devDependencies": {
     "grunt": "~0.4.1",
