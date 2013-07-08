@@ -1,1 +1,116 @@
-Stubble
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <title>Stubble</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+		<!-- Externals -->
+
+		<link type="text/css" href="http://www.asbjornenge.com/cdn/google-code-prettify/prettify.css"rel="stylesheet">
+		<link type="text/css" href="http://fonts.googleapis.com/css?family=Fanwood+Text:400,400italic|Reenie+Beanie|Lobster+Two:400,700italic" rel="stylesheet">
+		<script type="text/javascript" src="http://www.asbjornenge.com/cdn/google-code-prettify/prettify.js"></script>
+		<script type="text/javascript" src="http://www.asbjornenge.com/cdn/ga.js"></script>
+        <script type="text/javascript" src="http://www.asbjornenge.com/cdn/jquery.min.js"></script>
+
+		<!-- Page specific -->
+		
+        <link type="text/css" href="css/stubble.css" rel="stylesheet">
+		<script type="text/javascript" src="js/stubble.js"></script>
+    </head>
+
+    <body>
+		<a href="https://github.com/asbjornenge/stubble">
+			<img style="position: absolute; top: 0; right: 0; border: 0;" 
+			     src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" 
+			     alt="Fork me on GitHub">
+		</a>
+        <div id="wrapper">
+			&nbsp;
+			<div class="title">
+				<h1>Stubble</h1>
+				<h3>Tiny, hairy templates</h3>
+			</div>
+			<div class="content">
+				<h1>Stubble</h1>
+
+<p><strong>NB! Stubble is not ready for consumption just yet.</strong></p>
+
+<p><em>Tiny hairy templates, with potential.</em></p>
+
+<p>Stubble is a <strong><em>552 byte</em></strong> (gzipped) template system. It has a few areas of focus:</p>
+
+<ul>
+<li>Staying tiny</li>
+<li>Keep the markup clean &amp; separate from logic</li>
+<li>Easily expandable (using filters)</li>
+</ul>
+
+<p>It is far from a slick <a href="http://handlebarsjs.com/">handlebar mustache</a>, but you can easily grow it however you want.</p>
+
+<h2>Basics</h2>
+
+<h3>Defining templates</h3>
+
+<p>Put the data stub&#39;s somewhere in your dom.</p>
+
+<pre><code>&lt;div data-stub=&quot;login&quot;&gt;
+    &lt;span&gt;Welcome {{user}}!&lt;/span&gt;
+&lt;/div&gt;
+</code></pre>
+
+<h3>Rendering templates</h3>
+
+<p>Calling stub.load() will collect all your stubs and remove them from the dom.</p>
+
+<pre><code>stub.load()
+var login = stub(&#39;login&#39;,{&#39;user&#39;:&#39;Bob&#39;})
+==&gt;
+&lt;div&gt;
+    &lt;span&gt;Welcome Bob!&lt;/span&gt;
+&lt;/div&gt;
+</code></pre>
+
+<h2>Filters</h2>
+
+<p>…more on this later…</p>
+
+<h3>Validation</h3>
+
+<h3>Databind</h3>
+
+<h3>Two-way databind</h3>
+
+<h3>Other useful examples</h3>
+
+<ul>
+<li>Update sibling?</li>
+<li>Loops?</li>
+</ul>
+
+<h2>Install</h2>
+
+<p>…bower support coming soon… don&#39;t use it for now :-P</p>
+
+<h2>Use</h2>
+
+<pre><code>&lt;script src=&quot;components/stubble/stubble.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+
+<h2>TODO</h2>
+
+<ul>
+<li>Write more tests</li>
+<li>Finish documentation</li>
+<li>Support loading templates async?
+
+<ul>
+<li>stubble.load(&#39;path/to/file.html&#39;)</li>
+<li>stubble.load(&#39;path/to/folder&#39;)</li>
+<li>?? jade syntax ??
+enojy.</li>
+</ul></li>
+</ul>
+
+			</div>
+        </div>
+    </body>
+</html>
