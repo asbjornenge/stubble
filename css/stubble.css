@@ -1,0 +1,26 @@
+
+
+body {
+	background-color: #ccc;
+}
+
+#face {
+	background: transparent;
+	background-image : url(../img/face.png);
+	background-size  : 200px 250px;
+	background-repeat: no-repeat;
+	position : absolute;
+}
+
+#face svg {
+	background-color: transparent;
+}
+
+circle {
+	stroke: #fff;
+}
+
+svg {
+	fill: #fff;
+	stroke: #000;
+}
