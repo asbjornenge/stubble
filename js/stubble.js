@@ -26,6 +26,8 @@ FaceStub.prototype.growStub = function(factor) {
 
 $(document).ready(function() {
 	initFace();
+	$('code').addClass('prettyprint');
+	prettyPrint();
 })
 
 // [startX, endX, Y, num]

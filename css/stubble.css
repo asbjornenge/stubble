@@ -1,11 +1,12 @@
 
 
 body {
-	background-color: #E0E1E2;
+	font-size: 1.2em;
 }
 
 #wrapper {
-	min-height: 600px;
+	width : 800px;
+	margin : auto;
 }
 
 #face {
@@ -34,12 +35,8 @@ body {
 
 .content {
 	padding-top : 82px;
-	font-family : "museo-sans", sans-serif;
 }
 
-pre {
-	font-family : "museo-sans", sans-serif;
-}
 .content h1:first-child {
 	font-family: 'Lobster Two', cursive;
 	margin-left: 220px;
