@@ -16,7 +16,7 @@ It is far from a slick [handlebar mustache](http://handlebarsjs.com/), but you c
 	
 ## Usage
 
-	<script src="bower_components/stubble/stubble.min.js"></script>
+	<script src="bower_components/stubble/dist/stubble.vX.X.X.min.js"></script>
 
 ## Basics
 
