@@ -1,10 +1,16 @@
 
 
 body {
-	background-color: #ccc;
+	background-color: #E0E1E2;
+}
+
+#wrapper {
+	min-height: 600px;
 }
 
 #face {
+	width : 200px;
+	height : 250px;
 	background: transparent;
 	background-image : url(../img/face.png);
 	background-size  : 200px 250px;
@@ -12,15 +18,32 @@ body {
 	position : absolute;
 }
 
+#face .stub {
+	position : absolute;
+	width: 1.1px;
+	height: 1.1px;
+	border-radius: 2.2px;
+	background-color: black;
+	opacity: 0;
+	-webkit-transition : 10s all linear;
+}
+
 #face svg {
 	background-color: transparent;
 }
 
-circle {
-	stroke: #fff;
+.content {
+	padding-top : 82px;
+	font-family : "museo-sans", sans-serif;
 }
 
-svg {
-	fill: #fff;
-	stroke: #000;
+pre {
+	font-family : "museo-sans", sans-serif;
+}
+.content h1:first-child {
+	font-family: 'Lobster Two', cursive;
+	margin-left: 220px;
+	font-size: 5em;
+	font-style: italic;
+	line-height: 80px;
 }
