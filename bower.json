@@ -1,9 +1,12 @@
 {
   "name": "stubble",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "dependencies": {},
-  "devDependencies": {
-
-  }
+  "devDependencies": {},
+  "main": "lib/stubble.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ]
 }
-
